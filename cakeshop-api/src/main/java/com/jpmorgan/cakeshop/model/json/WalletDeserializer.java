@@ -55,7 +55,7 @@ public class WalletDeserializer extends JsonDeserializer<WalletPostJsonRequest> 
         }
 
         if (null != node.get("newBalance")) {
-            request.setNewBalance(node.get("newBalance").textValue());
+            request.setNewBalance(Long.parseLong(node.get("newBalance").textValue()));
         }
 
         return request;

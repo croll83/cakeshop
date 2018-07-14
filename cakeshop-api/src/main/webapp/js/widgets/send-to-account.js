@@ -18,10 +18,10 @@ module.exports = function() {
 		'		<input type="text" class="form-control" id="transfer-to">' +
 		'		<label for="amount">Amount</label>' +
 		'		<input type="text" class="form-control" id="amount">' +
-		'		<label for="data">TX Data</label>' +
-		'   <textarea id="data"></textarea>' +
-		'		<label for="private_for" title="One key per line">Private For</label>' +
-		'   <textarea id="private_for"></textarea>' +
+		'		<label for="data">TX Data</label><br>' +
+		'   <textarea id="data" class="form-control" rows="5"></textarea>' +
+		'		<label for="private_for" title="One key per line">Private For</label><br>' +
+		'   <textarea id="private_for" class="form-control" rows="3"></textarea>' +
 		'	</div>'+
 		'	<div class="form-group pull-right">' +
 		'		<span class="danger error-msg"></span>' +
@@ -31,7 +31,8 @@ module.exports = function() {
 		'	</div>'),
 
 		modalTemplate: _.template( '<div class="modal-body">' +
-		'	Are you sure you want to transfer <span class="danger"><%=amount%></span> from <%=from%> to <%=to%> with data <%=data%> ?' +
+		' <%=confirmation%>'+
+		//'	Are you sure you want to transfer <span class="danger"><%=amount%></span> from <%=from%> to <%=to%> with data <%=data%> ?' +
 		'	</div>' +
 		'	<div class="modal-footer">' +
 		'		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
@@ -39,6 +40,10 @@ module.exports = function() {
 		'	</div>'),
 
 		modalConfirmation: _.template( '<div class="modal-body"> <%=message %> </div>'),
+
+		getVisible: function() {
+			return 600;
+		},
 
 		subscribe: function() {
 			//repopulate account list when new account is added
@@ -79,36 +84,41 @@ module.exports = function() {
 					to = $('#widget-' + _this.shell.id + ' #transfer-to').val(),
 					amount = $('#widget-' + _this.shell.id + ' #amount').val(),
 					data = $('#widget-' + _this.shell.id + ' #data').val(),
-					privateFor = $('#widget-' + _this.shell.id + ' #private_for').val();
+					privateFor = $('#widget-' + _this.shell.id + ' #private_for').val(),
+					confirmation = '';
 
 					if (_.isString(private_for) && !_.isEmpty(private_for)) {
+						confirmationPF = '<br>(only for: <%=private_for%>)';
 			      privateFor = privateFor.split("\n");
 			    }
 
 				//verify that everything is filled out
-				if (from == '' || amount == '') {
+				if (from == '' || to == '') {
 					//error
-					$('#widget-' + _this.shell.id + ' .error-msg').html('From and Amount fields required.');
-				} else if (to == '' && privateFor == '') {
-					//error
-					$('#widget-' + _this.shell.id + ' .error-msg').html('At least To or Private For are required.');
+					$('#widget-' + _this.shell.id + ' .error-msg').html('From and To fields required.');
 				} else {
 					//empty error fields just in case
 					$('#widget-' + _this.shell.id + ' .error-msg').html('');
-					var realTo;
-					if(to == '') {
-						realTo = privateFor;
+
+					var confirmation = 'Are you sure you want to ';
+
+					if(amount == '') {
+						confirmation = confirmation + 'call contract at <%=to%> ';
+					} else {
+						confirmation = confirmation + 'transfer <span class="danger"><%=amount%></span> to <%=to%> ';
 					}
-					else {
-						realTo = to;
+					if(data == '') {
+						confirmation = confirmation + 'with data <%=data%> ';
 					}
+					confirmation = confirmation + 'from <%=from%>?' + confirmationPF;
 
 					// set the modal text
 					$('#myModal .modal-content').html(_this.modalTemplate({
-						amount: amount,
-						from: from,
-						to: realTo,
-						data: data
+						// amount: amount,
+						// from: from,
+						// to: realTo,
+						// data: data
+						confirmation: confirmation
 					}) );
 
 					//open modal

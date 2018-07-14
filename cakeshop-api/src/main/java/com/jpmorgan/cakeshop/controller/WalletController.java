@@ -120,8 +120,7 @@ public class WalletController extends BaseController {
     public ResponseEntity<APIResponse> fundAccount(@RequestBody WalletPostJsonRequest request) throws APIException {
 
         APIResponse res;
-        if (StringUtils.isBlank(request.getFromAccount()) || StringUtils.isBlank(request.getAccount())
-                || null == request.getNewBalance()) {
+        if (StringUtils.isBlank(request.getFromAccount()) || StringUtils.isBlank(request.getAccount())) {
             res = new APIResponse();
             APIError err = new APIError();
             err.setStatus("400");

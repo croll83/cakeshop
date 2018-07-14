@@ -362,9 +362,9 @@ window.Tower = {
 
 		'wallet': function() {
 			var widgets = [
-				{ widgetId: 'accounts' },
-				{ widgetId: 'fund-accounts'},
 				{ widgetId: 'send-to-account'},
+				{ widgetId: 'accounts' },
+				{ widgetId: 'fund-accounts'}
 			];
 
 			Dashboard.showSection('wallet', widgets);
