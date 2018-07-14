@@ -1,4 +1,5 @@
 package com.jpmorgan.cakeshop.model.json;
+import java.util.List;
 
 public class WalletPostJsonRequest {
 
