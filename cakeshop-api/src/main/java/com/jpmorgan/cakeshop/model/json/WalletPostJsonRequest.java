@@ -1,6 +1,8 @@
 package com.jpmorgan.cakeshop.model.json;
 import java.util.List;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = WalletDeserializer.class)
 public class WalletPostJsonRequest {
 
     private String fromAccount, account, accountPassword, data;
