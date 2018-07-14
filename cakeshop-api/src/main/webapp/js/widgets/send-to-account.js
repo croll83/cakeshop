@@ -89,7 +89,7 @@ module.exports = function() {
 				if (from == '' || amount == '') {
 					//error
 					$('#widget-' + _this.shell.id + ' .error-msg').html('From and Amount fields required.');
-				} else if ((to == '' && privateFor == '') {
+				} else if (to == '' && privateFor == '') {
 					//error
 					$('#widget-' + _this.shell.id + ' .error-msg').html('At least To or Private For are required.');
 				} else {
