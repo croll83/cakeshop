@@ -4,7 +4,7 @@ module.exports = function() {
 	var extended = {
 		name: 'send-to-account',
 		title: 'Send To Accounts',
-		size: 'small',
+		size: 'large',
 
 		url: 'api/wallet/fund',
 		accountList: [],
@@ -21,7 +21,7 @@ module.exports = function() {
 		'		<label for="data">TX Data</label>' +
 		'   <textarea id="data"></textarea>' +
 		'		<label for="private_for" title="One key per line">Private For</label>' +
-		'   <textarea id="private_for"></textarea>'+
+		'   <textarea id="private_for"></textarea>' +
 		'	</div>'+
 		'	<div class="form-group pull-right">' +
 		'		<span class="danger error-msg"></span>' +
@@ -77,9 +77,10 @@ module.exports = function() {
 			$('#widget-' + this.shell.id + ' #transfer-btn').click( function() {
 				var from = $('#widget-' + _this.shell.id + ' #transfer-from').val(),
 					to = $('#widget-' + _this.shell.id + ' #transfer-to').val(),
-					amount = $('#widget-' + _this.shell.id + ' #amount').val();
-					data = $('#widget-' + _this.shell.id + ' #data').val();
+					amount = $('#widget-' + _this.shell.id + ' #amount').val(),
+					data = $('#widget-' + _this.shell.id + ' #data').val(),
 					privateFor = $('#widget-' + _this.shell.id + ' #private_for').val();
+
 					if (_.isString(private_for) && !_.isEmpty(private_for)) {
 			      privateFor = privateFor.split("\n");
 			    }
