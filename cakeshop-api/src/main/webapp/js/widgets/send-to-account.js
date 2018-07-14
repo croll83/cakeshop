@@ -88,7 +88,7 @@ module.exports = function() {
 					confirmationPF = '';
 
 					if (_.isString(private_for) && !_.isEmpty(private_for)) {
-						confirmationPF = '<br>(only for: <%=private_for%>)';
+						confirmationPF = '<br>(privateFor: ' + private_for + ')';
 			      privateFor = privateFor.split("\n");
 			    }
 
@@ -103,14 +103,14 @@ module.exports = function() {
 					var confirmation = 'Are you sure you want to ';
 
 					if(amount == '') {
-						confirmation = confirmation + 'call contract at <%=to%> ';
+						confirmation = confirmation + 'call contract at ' + to + ' ';
 					} else {
-						confirmation = confirmation + 'transfer <span class="danger"><%=amount%></span> to <%=to%> ';
+						confirmation = confirmation + 'transfer <span class="danger">' + amount + '</span> to '+ to + ' ';
 					}
-					if(data == '') {
-						confirmation = confirmation + 'with data <%=data%> ';
+					if(!(data == '')) {
+						confirmation = confirmation + 'with data ' + data + ' ';
 					}
-					confirmation = confirmation + 'from <%=from%>?' + confirmationPF;
+					confirmation = confirmation + 'from ' + from + '?' + confirmationPF;
 
 					// set the modal text
 					$('#myModal .modal-content').html(_this.modalTemplate({
