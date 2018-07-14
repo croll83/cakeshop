@@ -9,6 +9,10 @@ module.exports = {
 		filename: 'index-gen.js',
 		publicPath: '/js/'
 	},
+	node: {
+		fs: 'empty',
+		child_process: 'empty'
+	},
 	devtool: 'source-map',
 	watchOptions: {
 		aggregateTimeout: 300,

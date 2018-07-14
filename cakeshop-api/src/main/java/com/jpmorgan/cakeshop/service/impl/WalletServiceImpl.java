@@ -120,7 +120,16 @@ public class WalletServiceImpl implements WalletService, GethRpcConstants {
             Map<String, Object> fundArgs = new HashMap<>();
             fundArgs.put("from", accountFrom);
             fundArgs.put("to", request.getAccount());
-            fundArgs.put("value", request.getNewBalance());
+            fundArgs.put("value", "0x"+Long.toHexString(request.getNewBalance()));
+
+            if(StringUtils.isNotBlank(request.getData())) {
+              fundArgs.put("data", request.getData());
+            }
+            List<String> privateFor = request.getPrivateFor();
+            if (privateFor != null && privateFor.size() > 0) {
+                fundArgs.put("privateFor", privateFor);
+            }
+
             Map<String, Object> result = gethService.executeGethCall("eth_sendTransaction", new Object[]{fundArgs});
             String response = result.get("_result").toString();
             if (StringUtils.isNotBlank(response)) {

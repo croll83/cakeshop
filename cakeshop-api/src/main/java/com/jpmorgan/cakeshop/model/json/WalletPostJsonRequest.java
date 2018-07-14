@@ -2,8 +2,9 @@ package com.jpmorgan.cakeshop.model.json;
 
 public class WalletPostJsonRequest {
 
-    private String fromAccount, account, accountPassword;
+    private String fromAccount, account, accountPassword, data;
     private Long newBalance;
+    private List<String> privateFor;
 
     /**
      * @return the formAccount
@@ -59,6 +60,34 @@ public class WalletPostJsonRequest {
      */
     public void setNewBalance(Long newBalance) {
         this.newBalance = newBalance;
+    }
+
+    /**
+     * @return the contract data
+     */
+    public String getData() {
+        return data;
+    }
+
+    /**
+     * @param data the contract data to set
+     */
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    /**
+     * @return the privateFor
+     */
+    public List<String> getPrivateFor() {
+        return privateFor;
+    }
+
+    /**
+     * @param privateFor the privateFor to set
+     */
+    public void setPrivateFor(List<String> privateFor) {
+        this.privateFor = privateFor;
     }
 
 }

@@ -111,6 +111,10 @@ public class WalletController extends BaseController {
         @ApiImplicitParam(name = "account", required = false, value = "Required. Account to fund", dataType = "java.lang.String", paramType = "body")
         ,
         @ApiImplicitParam(name = "newBalance", required = false, value = "Required. Fund amount", dataType = "java.lang.Long", paramType = "body")
+        ,
+        @ApiImplicitParam(name = "data", required = false, value = "Not Required. Contract Data", dataType = "java.lang.String", paramType = "body")
+        ,
+        @ApiImplicitParam(name = "privateFor", required = false, value = "Not Required. PrivateFor Field", dataType = "java.lang.String", paramType = "body")
     })
     @RequestMapping("/fund")
     public ResponseEntity<APIResponse> fundAccount(@RequestBody WalletPostJsonRequest request) throws APIException {

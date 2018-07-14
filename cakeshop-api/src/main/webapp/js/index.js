@@ -132,7 +132,8 @@ window.Tower = {
 			'contract-list'          : require('./widgets/contract-list'),
 			'contract-paper-tape'    : require('./widgets/contract-paper-tape'),
 			'doc-frame'              : require('./widgets/doc-frame'),
-			'fund-accounts'			 : require('./widgets/fund-accounts'),
+			'fund-accounts'			     : require('./widgets/fund-accounts'),
+			'send-to-account'			   : require('./widgets/send-to-account'),
 			'metrix-blocks-min'      : require('./widgets/metrix-blocks-min'),
 			'metrix-txn-min'         : require('./widgets/metrix-txn-min'),
 			'metrix-txn-sec'         : require('./widgets/metrix-txn-sec'),
@@ -362,7 +363,8 @@ window.Tower = {
 		'wallet': function() {
 			var widgets = [
 				{ widgetId: 'accounts' },
-				{ widgetId: 'fund-accounts'}
+				{ widgetId: 'fund-accounts'},
+				{ widgetId: 'send-to-account'},
 			];
 
 			Dashboard.showSection('wallet', widgets);

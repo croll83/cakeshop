@@ -737,12 +737,20 @@ td.locked i.fa-lock,
 	margin-bottom: 8px;
 }
 
+.send-to-account-form input {
+	margin-bottom: 8px;
+}
+
 .error-msg {
 	color: #c51616;
 	padding-right: 5px;
 }
 
 .form-group.fund-accounts-form label {
+	padding-top: 8px;
+}
+
+.form-group.send-to-account-form label {
 	padding-top: 8px;
 }
 

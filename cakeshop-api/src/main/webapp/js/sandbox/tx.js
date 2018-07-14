@@ -141,6 +141,7 @@
     var privateFrom = $(container + " textarea#private_from").val();
     var privateFor = $(container + " textarea#private_for").val();
 
+
     if (_.isString(privateFrom)) {
       privateFrom = privateFrom.trim();
     }
