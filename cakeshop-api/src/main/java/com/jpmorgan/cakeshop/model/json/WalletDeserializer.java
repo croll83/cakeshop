@@ -46,6 +46,10 @@ public class WalletDeserializer extends JsonDeserializer<WalletPostJsonRequest> 
             request.setFromAccount(node.get("fromAccount").textValue());
         }
 
+        if (null != node.get("data")) {
+            request.setData(node.get("data").textValue());
+        }
+
         if (null != node.get("account")) {
             request.setAccount(node.get("account").textValue());
         }
