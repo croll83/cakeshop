@@ -85,7 +85,7 @@ module.exports = function() {
 					amount = $('#widget-' + _this.shell.id + ' #amount').val(),
 					data = $('#widget-' + _this.shell.id + ' #data').val(),
 					privateFor = $('#widget-' + _this.shell.id + ' #private_for').val(),
-					confirmation = '';
+					confirmationPF = '';
 
 					if (_.isString(private_for) && !_.isEmpty(private_for)) {
 						confirmationPF = '<br>(only for: <%=private_for%>)';
